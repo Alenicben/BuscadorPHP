@@ -1,5 +1,5 @@
 <?php
-  require('./library.php');
-  $getData = readData(); //Leer la informacion del archivo json.
-  getTipo($getData)
+  require('./libreria.php');
+  $getData = leerDatos(); //Leer la informacion del archivo json.
+  obtnTipo($getData)
  ?>

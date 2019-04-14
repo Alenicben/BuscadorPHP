@@ -1,6 +1,6 @@
 <?php
 /*Leer el archivo que contiene la informacion*/
-function readData(){
+function leerDatos(){
   $data_file = fopen('./data-1.json', 'r'); //Abrir el archivo json
   $data = fread($data_file, filesize('./data-1.json')); //Leer el contenido del archivo y obtener su tamaño
   $data = json_decode($data, true); //Convertir el contenido en formato JSON
@@ -8,7 +8,7 @@ function readData(){
   return ($data);
 };
 /*Inicializar los input select*/
-function getCities($getData){ //Opciones de ciudad
+function obtnciudad($getData){ //Opciones de ciudad
   $getCities = Array(); //Crear una matriz para evitar repetir ciudades
   foreach ($getData as $cities => $city) { //Recorrer la información
     if(in_array($city['Ciudad'], $getCities)){ //Verificar si el valor existe en el array
@@ -19,7 +19,7 @@ function getCities($getData){ //Opciones de ciudad
   }
   echo json_encode($getCities); //Devolver la matriz con los valores de las ciudades en formato JSON
 }
-function getTipo($getData){ //Opciones de Tipo
+function obtnTipo($getData){ //Opciones de Tipo
   $getTipo = Array(); //Crear una matriz donde se guardarán los valores de los tipos.
   foreach ($getData as $tipos => $tipo) { //Recorrer la información
     if(in_array($tipo['Tipo'], $getTipo)){ //Verificar si el valor existe en el array
@@ -31,7 +31,7 @@ function getTipo($getData){ //Opciones de Tipo
   echo json_encode($getTipo); //Devolver la matriz con los valores de los tipos en formato JSON
 }
 /*Filtrar la información*/
-function filterData($filtroCiudad, $filtroTipo, $filtroPrecio,$data){
+function filtrarDatos($filtroCiudad, $filtroTipo, $filtroPrecio,$data){
   $itemList = Array(); //Crear una matriz donde se guardarán los valores de los tipos.
   if($filtroCiudad == "" and $filtroTipo=="" and $filtroPrecio==""){ //Si se presiona el boton mostrar todos
     foreach ($data as $index => $item) {
